@@ -8,7 +8,7 @@
 </head>
 
 <body>
-  <div class="form" >
+  <div class="form">
       
       <ul class="tab-group">
         <li class="tab active"><a href="#signup">Sign Up</a></li>
@@ -51,7 +51,7 @@
             <input type="password"required autocomplete="off"/>
           </div>
           
-          <button type="submit" class="button button-block"/>Started</button>
+          <button type="submit" class="button button-block"/>Submit</button>
           
           </form>
 
@@ -60,7 +60,7 @@
         <div id="login">   
           <h1>Welcome Again</h1>
           
-          <form action="/" method="post">
+          <form action="Property.php" method="POST">
           
            <div class="field-wrap">
             <label>

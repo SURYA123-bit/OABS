@@ -1,0 +1,45 @@
+<!Doctype html>
+<html>
+<style>
+.btn-group button {
+  background-color: #188bf7; /* Green background */
+  border: 1px solid green; /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+  align-self: center;
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color:  #188bf7;
+  background-image: url("https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+  
+}
+
+</style>
+<body>
+
+<h1>Button Group</h1>
+
+<div class="btn-group">
+
+  <button onclick="window.location.href='form.html'">POST ADD</button>
+  <button>View ADD</button>
+ 
+</div>
+
+</body>
+</html>
