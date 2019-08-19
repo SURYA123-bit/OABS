@@ -5,21 +5,22 @@ $password = $_POST['password'];
 
 
 
-$username = stripclashes($username);
-$password = stripclashes($password);
-$username = mysql_real_escape_string($username);
-$password = mysql_real_escape_string($password);
 
 
-mysql_connect("localhost","root","");
-mysql_select_db("OABS")
+$con = mysqli_connect("localhost","root","","OABS");
+// Check connection
 
-$result=mysql_query("select * from login where username='$username' and password= '$password'")
-or die("Failed to Query Database",mysql_error());
-$row=mysql_fetch_Array($result);
-if($row['username']==$username && $row['password']==$password){
-	 echo "loginsucess"
-}
+ $query = "select * from login where username='$username' and password= '$password'";
+
+$result = mysqli_query($con,$query) or die(mysql_error());
+ $rows = mysqli_num_rows($result);
+        if($rows==1){
+     
+           echo "success";
+           header("Location: Home page.html");
+    
+         }
+
 else{
 	echo "Failed";
 }
