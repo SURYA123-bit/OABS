@@ -1,39 +1,74 @@
-<?php
-//This code shows how to Upload And Insert Image Into Mysql Database Using Php Html.
-//connecting to uploadFile database.
-$conn = mysqli_connect("localhost", "root", "", "uploadFile");
-if($conn) {
-//if connection has been established display connected.
-echo "connected";
-}
-//if button with the name uploadfilesub has been clicked
-if(isset($_POST['uploadfilesub'])) {
-//declaring variables
-$filename = $_FILES['uploadfile']['name'];
-$filetmpname = $_FILES['uploadfile']['tmp_name'];
-//folder where images will be uploaded
-$folder = 'imagesuploadedf/';
-//function for saving the uploaded images in a specific folder
-move_uploaded_file($filetmpname, $folder.$filename);
-//inserting image details (ie image name) in the database
-$sql = "INSERT INTO `uploadedimage` (`imagename`)  VALUES ('$filename')";
-$qry = mysqli_query($conn,  $sql);
-if( $qry) {
-echo "image uploaded";
-}
-}
+<?php  
+ $connect = mysqli_connect("localhost", "root", "", "OABS");  
+ if(isset($_POST["insert"]))  
+ {  
+      $file = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));  
+      $description = $_POST['description'];
+      $location = $_POST['location'];
+      $cost = $_POST['cost'];
+      $contact = $_POST['contact'];
+      $query = "INSERT INTO tbl_images(name,description,cost,location,contact) VALUES ('$file','$description','$cost','$location','$contact')";  
+      if(mysqli_query($connect, $query))  
+      {  
+           echo '<script>alert("Image Inserted into Database")</script>';  
+      }  
+ }  
+ ?>  
+ <!DOCTYPE html>  
+ <html>  
+      <head>  
+           <title>Webslesson Tutorial | Insert and Display Images From Mysql Database in PHP</title>  
+           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
+           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
+           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
+      </head>  
+      <body>  
+           <br /><br />  
+           <div class="container" style="width:500px;">  
+                <h3 align="center">Insert and Display Images From Mysql Database in PHP</h3>  
+                <br />  
+                <form method="post" enctype="multipart/form-data">
+                  <label>Description</label>
+                      <input type="text" id="description" name="description" placeholder="Please enter product description">
 
-?>
+                      <label >Location</label>
+                      <input type="text" id="location" name="location" placeholder="Your location">
+                    
+                    <label >Cost</label>
+                      <input type="text" id="cost" name="cost" placeholder="Product cost">
 
-
-<!DOCTYPE html>
-<html>
-<body>
-<!--Make sure to put "enctype="multipart/form-data" inside form tag when uploading files -->
-<form action="" method="post" enctype="multipart/form-data" >
-<!--input tag for file types should have a "type" attribute with value "file"-->
-<input type="file" name="uploadfile" />
-<input type="submit" name="uploadfilesub" value="upload" />
-</form>
-</body>
-</html>
+                      <label >Contact</label>
+                      <input type="number" id="contact" name="contact" placeholder="Please enter your contact number">
+  
+                     <input type="file" name="image" id="image" />  
+                     <br />  
+                     <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-info" />  
+                </form>  
+                <br />  
+                <br />  
+               
+           </div>  
+      </body>  
+ </html>  
+ <script>  
+ $(document).ready(function(){  
+      $('#insert').click(function(){  
+           var image_name = $('#image').val();  
+           if(image_name == '')  
+           {  
+                alert("Please Select Image");  
+                return false;  
+           }  
+           else  
+           {  
+                var extension = $('#image').val().split('.').pop().toLowerCase();  
+                if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)  
+                {  
+                     alert('Invalid Image File');  
+                     $('#image').val('');  
+                     return false;  
+                }  
+           }  
+      });  
+ });  
+ </script>  
