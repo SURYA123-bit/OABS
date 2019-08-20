@@ -15,9 +15,41 @@
  }  
  ?>  
  <!DOCTYPE html>  
- <html>  
+ <html> 
+ <style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #188bf7;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: ##188bf7;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style> 
       <head>  
-           <title>Webslesson Tutorial | Insert and Display Images From Mysql Database in PHP</title>  
+           <title> View Post </title>  
            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
@@ -25,7 +57,7 @@
       <body>  
            <br /><br />  
            <div class="container" style="width:500px;">  
-                <h3 align="center">Insert and Display Images From Mysql Database in PHP</h3>  
+                <h3 align="center">Post your ADD</h3>  
                 <br />  
                 <form method="post" enctype="multipart/form-data">
                   <label>Description</label>
@@ -38,11 +70,11 @@
                       <input type="text" id="cost" name="cost" placeholder="Product cost">
 
                       <label >Contact</label>
-                      <input type="number" id="contact" name="contact" placeholder="Please enter your contact number">
+                      <input type="text" id="contact" name="contact" placeholder="Please enter your contact number">
   
                      <input type="file" name="image" id="image" />  
                      <br />  
-                     <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-info" />  
+                     <input type="submit" name="insert" id="insert" value="submit" class="btn btn-info" />  
                 </form>  
                 <br />  
                 <br />  
